@@ -19,4 +19,6 @@ sealed class Failure with _$Failure {
   const factory Failure.unknown({
     @Default('An unknown error occurred') String message,
   }) = UnknownFailure;
+
+  const factory Failure.cancelled() = CancelledFailure;
 }

@@ -28,9 +28,9 @@ abstract class AppColors {
   static const darkSurf = Color(0xFF10201D);
 
   // Gradient stops (0% → 48% → 100%)
-  static const gradientStart = highlight;   // #FFB347
-  static const gradientMid   = primary;     // #F2683C
-  static const gradientEnd   = depth;       // #B23A55
+  static const gradientStart = highlight; // #FFB347
+  static const gradientMid = primary; // #F2683C
+  static const gradientEnd = depth; // #B23A55
 
   static const brandGradient = LinearGradient(
     colors: [gradientStart, gradientMid, gradientEnd],
@@ -40,13 +40,13 @@ abstract class AppColors {
   );
 
   // Semantic
-  static const error   = Color(0xFFB3261E);
+  static const error = Color(0xFFB3261E);
   static const success = Color(0xFF4CAF50);
   static const warning = accent;
 
   // Surfaces
   static const backgroundLight = onColour;
-  static const backgroundDark  = darkSurf;
-  static const surfaceLight    = Color(0xFFFAF8F6);
-  static const surfaceDark     = Color(0xFF1A2E2A);
+  static const backgroundDark = darkSurf;
+  static const surfaceLight = Color(0xFFFAF8F6);
+  static const surfaceDark = Color(0xFF1A2E2A);
 }

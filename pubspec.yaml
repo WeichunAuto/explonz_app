@@ -33,6 +33,10 @@ dependencies:
   shared_preferences: ^2.3.3
   flutter_secure_storage: ^9.2.2
 
+  # 系统权限
+  permission_handler: ^11.3.1
+  app_settings: ^7.0.0
+
   # 工具
   equatable: ^2.0.7
   intl: ^0.20.1
@@ -55,4 +59,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/launch and authentication/
     - assets/icons/
