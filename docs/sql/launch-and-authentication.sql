@@ -18,6 +18,9 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";   -- 提供 crypt()（密码哈希验
 -- 登录方式枚举，与 Flutter 端 AuthProvider { email, google, facebook } 保持一致
 CREATE TYPE auth_provider_type AS ENUM ('email', 'google', 'facebook');
 
+-- 性别枚举；NULL 表示用户未填写
+CREATE TYPE gender_type AS ENUM ('male', 'female', 'prefer_not_to_say');
+
 
 -- ---------------------------------------------------------------------------
 -- 表：users（用户主表）
@@ -33,6 +36,7 @@ CREATE TABLE users (
     nickname    TEXT        NOT NULL,                               -- 用户昵称，首次登录取自 OAuth 提供方
     avatar_url  TEXT,                                              -- 头像 URL，可为空
     email       TEXT,                                              -- 邮箱，可为空；有值时全局唯一
+    gender      gender_type,                                       -- 性别，可为空（用户未填写时为 NULL）
     created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),                -- 账号创建时间
     updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),                -- 最后更新时间，由触发器自动维护
 

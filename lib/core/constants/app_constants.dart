@@ -1,6 +1,6 @@
 abstract class AppConstants {
   // TODO: Replace with actual API base URL
-  static const baseUrl = 'https://api.explonz.com';
+  static const baseUrl = 'http://192.168.68.50:3005';
 
   // Secure storage keys
   static const tokenKey = 'auth_token';

@@ -71,7 +71,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   ) async {
     try {
       final response = await _dio.post<Map<String, dynamic>>(path, data: data);
-      return fromJson(response.data!);
+      print("data = $response.data!['data']");
+      return fromJson(response.data!["data"]);
     } on DioException catch (e) {
       throw _mapDioException(e);
     }
@@ -85,12 +86,16 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       return Failure.network(message: e.message ?? 'Network error');
     }
     final statusCode = e.response?.statusCode;
+    // print("response is : ");
+    // print(e.response?.data?["msg"]);
+    // print("statusCode = $statusCode");
+    // // String msg = e.response?['msg'];
+    // print("message = $e.message");
     if (statusCode == 401) {
       return const Failure.unauthorized();
     }
     return Failure.server(
-      message:
-          e.response?.data?['error']?['message'] ?? e.message ?? 'Server error',
+      message: e.response?.data?["msg"],
       statusCode: statusCode,
     );
   }
