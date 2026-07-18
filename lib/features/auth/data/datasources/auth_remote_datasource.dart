@@ -22,6 +22,8 @@ abstract interface class AuthRemoteDatasource {
   Future<AuthTokenModel> refreshToken({required String refreshToken});
 
   Future<UserModel> getCurrentUser();
+
+  Future<void> logout({required String refreshToken});
 }
 
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
@@ -59,6 +61,15 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     try {
       final response = await _dio.get<Map<String, dynamic>>('/users/me');
       return UserModel.fromJson(response.data!);
+    } on DioException catch (e) {
+      throw _mapDioException(e);
+    }
+  }
+
+  @override
+  Future<void> logout({required String refreshToken}) async {
+    try {
+      await _dio.patch<void>('/auth/logout/$refreshToken');
     } on DioException catch (e) {
       throw _mapDioException(e);
     }
